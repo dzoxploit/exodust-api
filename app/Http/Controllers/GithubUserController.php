@@ -51,8 +51,8 @@ class GithubUserController extends Controller
         try {        
                 $githubusers = GithubUser::where('id',$id)->first();
                 if($githubusers != null){
-                    $user = 'your-username';
-                    $pwd = 'your-password';
+                    $user = env('GITHUB_USERNAME');
+                    $pwd = env('GITHUB_PASSWORD');
                     $username = $request->username;
             
                     $url = 'https://api.github.com/users/'.$username;
@@ -83,7 +83,6 @@ class GithubUserController extends Controller
                     $githubuser->id_user = auth('api')->user()->id;
                     $githubuser->save();
             
-                    Cache::tags(['github_users'])->flush();
                     return $this->generateResponse($githubuser, 'data successfully updated', 201);        
 
                 }
@@ -103,7 +102,6 @@ class GithubUserController extends Controller
             DB::statement("UPDATE github_users SET github_users.id = @count:= @count + 1;");
             DB::statement("ALTER TABLE github_users AUTO_INCREMENT = 1;");
             
-            Cache::tags(['github_users'])->flush();
             return $this->generateResponse([], 'data deleted!', 202);
         }catch(\Exception $e){
             $data = "Error {$e->getMessage()}";

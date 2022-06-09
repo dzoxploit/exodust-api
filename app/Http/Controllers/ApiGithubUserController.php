@@ -16,8 +16,8 @@ class ApiGithubUserController extends Controller
     /* untuk menampilkan data antara news berbasis html */
     public function index_github_main(Request $request){
         
-        $user = 'your-username';
-        $pwd = 'your-password';
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
         $username = $request->username;
 
         $url = 'https://api.github.com/users/'.$username;
@@ -73,8 +73,8 @@ class ApiGithubUserController extends Controller
     }
 
     public function index_github_main_auth(Request $request){
-        $user = 'your-username';
-        $pwd = 'your-password';
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
         $username = $request->username;
 
         $url = 'https://api.github.com/users/'.$username;
@@ -145,8 +145,8 @@ class ApiGithubUserController extends Controller
 
     public function insert_data_github_users(Request $request){
         try {
-            $user = 'your-username';
-            $pwd = 'your-password';
+            $user = env('GITHUB_USERNAME');
+            $pwd = env('GITHUB_PASSWORD');
             $username = $request->username;
 
             $url = 'https://api.github.com/users/'.$username;
@@ -190,13 +190,13 @@ class ApiGithubUserController extends Controller
         }
     }
 
-    public function detail_organization_github_main(Request $request){
+    public function list_organization_repositories_github_main(Request $request){
 
-        $user = 'your-username';
-        $pwd = 'your-password';
-        $username = $request->organization;
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
+        $organization = $request->organization;
 
-        $url = 'https://api.github.com/users/'.$username;
+        $url = 'https://api.github.com/orgs/'.$organization.'/repos';
         $cInit = curl_init();
         curl_setopt($cInit, CURLOPT_URL, $url);
         curl_setopt($cInit, CURLOPT_RETURNTRANSFER, 1); // 1 = TRUE
@@ -216,42 +216,81 @@ class ApiGithubUserController extends Controller
             Log::error("cURL Error #:" . $err);
             return $this->generateResponse('Error', "cURL Error #:" . $err, 401);
         } else {
-            return $this->generateResponse($result, 'Data github Search', 200);
+            return $this->generateResponse($result, 'Data github organization Search', 200);
         }
     }
 
-    public function detail_company_github_main(Request $request){
-        $company = $request->get('company');
+    public function get_organization_repositories_github_main(Request $request){
 
-        $companyget = RemoveCharCompany($company);
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
+        $owner = $request->owner;
+        $repo = $request->repo;
 
-        $curl = curl_init();
+        $url = 'https://api.github.com/repos/'.$owner.'/'.$repo;
+        $cInit = curl_init();
+        curl_setopt($cInit, CURLOPT_URL, $url);
+        curl_setopt($cInit, CURLOPT_RETURNTRANSFER, 1); // 1 = TRUE
+        curl_setopt($cInit, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($cInit, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($cInit, CURLOPT_USERPWD, $user . ':' . $pwd);
 
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://api.github.com/users/{$companyget}",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        ));
+        $output = curl_exec($cInit);
 
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
+        $info = curl_getinfo($cInit, CURLINFO_HTTP_CODE);
+        $err = curl_error($cInit);
+        $result = json_decode($output);
 
-        curl_close($curl);
+        curl_close($cInit);
 
         if ($err) {
             Log::error("cURL Error #:" . $err);
-            return "cURL Error #:" . $err;
+            return $this->generateResponse('Error', "cURL Error #:" . $err, 401);
         } else {
-            return $this->generateResponse($response, 'Data github Search', 200);
+            return $this->generateResponse($result, 'get repo github organization', 200);
         }
-    } 
-
-    public function following_click_github_user(Request $request){
-        
     }
- 
+
+    public function create_organization_repositories_github_main(Request $request){
+
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
+        $organization = $request->organization;
+
+        $data = [
+            "name" => $request->name,
+            "description" => $request->description,
+            "homepage" => "https://github.com",
+            "private" => false,
+            "has_issues" => true,
+            "has_projects" => true,
+            "has_wiki" => true
+        ];
+
+        $url = 'https://api.github.com/orgs/'.$organization.'/repos';
+        $cInit = curl_init();
+        curl_setopt($cInit, CURLOPT_URL, $url);
+        curl_setopt($cInit, CURLOPT_RETURNTRANSFER, 1); // 1 = TRUE
+        curl_setopt($cInit, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($cInit, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($cInit, CURLOPT_USERPWD, $user . ':' . $pwd);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+
+        $output = curl_exec($cInit);
+
+        $info = curl_getinfo($cInit, CURLINFO_HTTP_CODE);
+        $err = curl_error($cInit);
+        $result = json_decode($output);
+
+        curl_close($cInit);
+
+        if ($err) {
+            Log::error("cURL Error #:" . $err);
+            return $this->generateResponse('Error', "cURL Error #:" . $err, 401);
+        } else {
+            return $this->generateResponse($result, 'Create github organization repositories', 200);
+        }
+    }
 }

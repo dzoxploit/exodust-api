@@ -19,15 +19,29 @@ use App\Http\Controllers\SearchLogController;
 */
 
 
-Route::post('/insert-github-users',  [ApiGithubUserController::class, 'insert_data_github_users'])->middleware('auth:api');
-Route::post('/index-github-users/auth',  [ApiGithubUserController::class, 'index_github_main_auth']);
+
+//search
 Route::get('/index-github-users-saved',  [GithubUserController::class, 'index'])->middleware('auth:api');
 Route::get('/index-search-logs',  [SearchLogController::class, 'index'])->middleware('auth:api');
+
+//CRUD
+Route::post('/index-github-users/auth',  [ApiGithubUserController::class, 'index_github_main_auth']);
+Route::get('/index-github-users-saved',  [GithubUserController::class, 'index'])->middleware('auth:api');
+Route::post('/insert-github-users',  [ApiGithubUserController::class, 'insert_data_github_users'])->middleware('auth:api');
 Route::get('/searching-github-users-saved',  [GithubUserController::class, 'searching'])->middleware('auth:api');
 Route::post('/update-github-users/{id}', [GithubUserController::class, 'update'])->middleware('auth:api');
 Route::post('/delete-github-users/{id}', [GithubUserController::class, 'delete'])->middleware('auth:api');
 
+//list organizations
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/list_organization_repositories',  [ApiGithubUserController::class, 'list_organization_repositories_github_main']);
+Route::post('/create_organization_repositories',  [ApiGithubUserController::class, 'create_organization_repositories_github_main']);
+Route::post('/get_organization_repositories',  [ApiGithubUserController::class, 'get_organization_repositories_github_main']);
+Route::post('/update_organization_repositories',  [ApiGithubUserController::class, 'update_organization_repositories_github_main']);
+Route::post('/delete_organization_repositories',  [ApiGithubUserController::class, 'delete_organization_repositories_github_main']);
+
+
+//Login, Register, Index no auth
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register',[App\Http\Controllers\AuthController::class, 'register']);
 Route::post('/index-github-users',  [ApiGithubUserController::class, 'index_github_main']);
