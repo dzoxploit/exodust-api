@@ -39,6 +39,8 @@ Route::post('/create_organization_repositories',  [ApiGithubUserController::clas
 Route::post('/get_organization_repositories',  [ApiGithubUserController::class, 'get_organization_repositories_github_main']);
 Route::post('/update_organization_repositories',  [ApiGithubUserController::class, 'update_organization_repositories_github_main']);
 Route::post('/delete_organization_repositories',  [ApiGithubUserController::class, 'delete_organization_repositories_github_main']);
+Route::post('/enable_automated_fixes_organization_repositories',  [ApiGithubUserController::class, 'enable_automated_fixes_organization_repositories_github_main']);
+Route::post('/disable_automated_fixes_organization_repositories',  [ApiGithubUserController::class, 'disable_automated_fixes_organization_repositories_github_main']);
 
 
 //Login, Register, Index no auth
