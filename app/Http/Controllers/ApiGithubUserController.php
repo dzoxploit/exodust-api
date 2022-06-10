@@ -472,4 +472,70 @@ class ApiGithubUserController extends Controller
             return $this->generateResponse($result, 'Update github organization repositories', 200);
         }
     }
+
+    public function list_code_owners_errors_organization_repositories_github_main(Request $request){
+
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
+        $owner = $request->owner;
+        $repo = $request->repo;
+
+        $url = 'https://api.github.com/repos/'.$owner.'/'.$repo.'/codeowners/errors';
+
+
+        $cInit = curl_init();
+        curl_setopt($cInit, CURLOPT_URL, $url);
+        curl_setopt($cInit, CURLOPT_RETURNTRANSFER, 1); // 1 = TRUE
+        curl_setopt($cInit, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($cInit, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($cInit, CURLOPT_USERPWD, $user . ':' . $pwd);
+
+        $output = curl_exec($cInit);
+
+        $info = curl_getinfo($cInit, CURLINFO_HTTP_CODE);
+        $err = curl_error($cInit);
+        $result = json_decode($output);
+
+        curl_close($cInit);
+
+        if ($err) {
+            Log::error("cURL Error #:" . $err);
+            return $this->generateResponse('Error', "cURL Error #:" . $err, 401);
+        } else {
+            return $this->generateResponse($result, 'List Code Owners organization repositories', 200);
+        }
+    }
+
+    public function list_repository_contributors_organization_repositories_github_main(Request $request){
+
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
+        $owner = $request->owner;
+        $repo = $request->repo;
+
+        $url = 'https://api.github.com/repos/'.$owner.'/'.$repo.'/contributors';
+
+
+        $cInit = curl_init();
+        curl_setopt($cInit, CURLOPT_URL, $url);
+        curl_setopt($cInit, CURLOPT_RETURNTRANSFER, 1); // 1 = TRUE
+        curl_setopt($cInit, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($cInit, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($cInit, CURLOPT_USERPWD, $user . ':' . $pwd);
+
+        $output = curl_exec($cInit);
+
+        $info = curl_getinfo($cInit, CURLINFO_HTTP_CODE);
+        $err = curl_error($cInit);
+        $result = json_decode($output);
+
+        curl_close($cInit);
+
+        if ($err) {
+            Log::error("cURL Error #:" . $err);
+            return $this->generateResponse('Error', "cURL Error #:" . $err, 401);
+        } else {
+            return $this->generateResponse($result, 'List Code Owners organization repositories', 200);
+        }
+    }
 }
