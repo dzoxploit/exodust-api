@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "28373fa6-f45e-4d94-ad58-521853c12d4a",
+		"name": "test-exodust",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "crud",
+					"item": [
+						{
+							"name": "index-github-users-auth",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjdmZTZlMS0zYjdmLTQzNmItYmE4NC1lYTU0MGJlOGU2ODAiLCJqdGkiOiIwODk3YmE2ZDQ2ODJiYTUwNTk1YzllMDE1YzY3MjBhMDBjZjJiMzQzN2JmZmRjYmY0Y2EwZjMxMWNkNzNkZDY3MGIzMTczYjMyNjU5ZTczNCIsImlhdCI6MTY1NDc3NDY0NC42NzI2MTksIm5iZiI6MTY1NDc3NDY0NC42NzI2MjMsImV4cCI6MTY4NjMxMDY0NC42NTYzMTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.cHcSqKLSJs_Ch2E5aAiQbdpx5IiivxsDxL9yhH44Qn6fQ3N6QB-15WulS2ISe8H9aNQ6a-7Opgc1uf0kNa67o1Aieb1JYlOtcWbFqOTc71HGwEbhuU_Z5UIkujNdVjZ6W6aoOBDTasszziFfNMMJuPBP9l8tyTkuS48eokPrhmr0CN21htDRdFs80TXqX3tQX2OqQ-hP_zEHHd67TfEDvreYHm5iucpX8G6vWQ78yn9ueMVZ0e9AkcAn19F0p0_ch5v7QE4VCrV0uARQRSRwEX1A7KXmjz07E2Dgl9Y22-vvZvS5YnzHoDPbwyGLtfe7iGQqoyYT2XC3pnnyDJc4tprULkde2ahfZ6SHaYvjO0666qNcDFL2LaYs9Pcd-VzEtuOCjFZbZBvyy1O9lnLNVuK_FEkb-I2LJh8pwoZQrumKfYqegvKr_Jp6VjhucRNe2iwzJ5qJKGLLn2YYQo_u4y-eqO3MsNUCD1EAfTzJ_W_GuxOdVtAOXR1JA2BE-vrHLti5scUKKhWKPQU7cxwTtipXmM8LMM_p9mVvIHCFHPv9bKV_fzgG55OMGuFGNzZli9f32PiLPDfCd0jUeGCfOR4uJxFqm7FIwfxoIr1wLhisRUEG4nxksgZcMaEM5zwQZIMkFa5sJf_oeKTAKTe2jdrQcEJPFj0yjEEkS1MdEPA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "jahfal",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/index-github-users/auth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"index-github-users",
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insert Github users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjdmZTZlMS0zYjdmLTQzNmItYmE4NC1lYTU0MGJlOGU2ODAiLCJqdGkiOiIwODk3YmE2ZDQ2ODJiYTUwNTk1YzllMDE1YzY3MjBhMDBjZjJiMzQzN2JmZmRjYmY0Y2EwZjMxMWNkNzNkZDY3MGIzMTczYjMyNjU5ZTczNCIsImlhdCI6MTY1NDc3NDY0NC42NzI2MTksIm5iZiI6MTY1NDc3NDY0NC42NzI2MjMsImV4cCI6MTY4NjMxMDY0NC42NTYzMTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.cHcSqKLSJs_Ch2E5aAiQbdpx5IiivxsDxL9yhH44Qn6fQ3N6QB-15WulS2ISe8H9aNQ6a-7Opgc1uf0kNa67o1Aieb1JYlOtcWbFqOTc71HGwEbhuU_Z5UIkujNdVjZ6W6aoOBDTasszziFfNMMJuPBP9l8tyTkuS48eokPrhmr0CN21htDRdFs80TXqX3tQX2OqQ-hP_zEHHd67TfEDvreYHm5iucpX8G6vWQ78yn9ueMVZ0e9AkcAn19F0p0_ch5v7QE4VCrV0uARQRSRwEX1A7KXmjz07E2Dgl9Y22-vvZvS5YnzHoDPbwyGLtfe7iGQqoyYT2XC3pnnyDJc4tprULkde2ahfZ6SHaYvjO0666qNcDFL2LaYs9Pcd-VzEtuOCjFZbZBvyy1O9lnLNVuK_FEkb-I2LJh8pwoZQrumKfYqegvKr_Jp6VjhucRNe2iwzJ5qJKGLLn2YYQo_u4y-eqO3MsNUCD1EAfTzJ_W_GuxOdVtAOXR1JA2BE-vrHLti5scUKKhWKPQU7cxwTtipXmM8LMM_p9mVvIHCFHPv9bKV_fzgG55OMGuFGNzZli9f32PiLPDfCd0jUeGCfOR4uJxFqm7FIwfxoIr1wLhisRUEG4nxksgZcMaEM5zwQZIMkFa5sJf_oeKTAKTe2jdrQcEJPFj0yjEEkS1MdEPA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "jahfal",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/insert-github-users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"insert-github-users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index-github-users-saved",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjdmZTZlMS0zYjdmLTQzNmItYmE4NC1lYTU0MGJlOGU2ODAiLCJqdGkiOiIwODk3YmE2ZDQ2ODJiYTUwNTk1YzllMDE1YzY3MjBhMDBjZjJiMzQzN2JmZmRjYmY0Y2EwZjMxMWNkNzNkZDY3MGIzMTczYjMyNjU5ZTczNCIsImlhdCI6MTY1NDc3NDY0NC42NzI2MTksIm5iZiI6MTY1NDc3NDY0NC42NzI2MjMsImV4cCI6MTY4NjMxMDY0NC42NTYzMTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.cHcSqKLSJs_Ch2E5aAiQbdpx5IiivxsDxL9yhH44Qn6fQ3N6QB-15WulS2ISe8H9aNQ6a-7Opgc1uf0kNa67o1Aieb1JYlOtcWbFqOTc71HGwEbhuU_Z5UIkujNdVjZ6W6aoOBDTasszziFfNMMJuPBP9l8tyTkuS48eokPrhmr0CN21htDRdFs80TXqX3tQX2OqQ-hP_zEHHd67TfEDvreYHm5iucpX8G6vWQ78yn9ueMVZ0e9AkcAn19F0p0_ch5v7QE4VCrV0uARQRSRwEX1A7KXmjz07E2Dgl9Y22-vvZvS5YnzHoDPbwyGLtfe7iGQqoyYT2XC3pnnyDJc4tprULkde2ahfZ6SHaYvjO0666qNcDFL2LaYs9Pcd-VzEtuOCjFZbZBvyy1O9lnLNVuK_FEkb-I2LJh8pwoZQrumKfYqegvKr_Jp6VjhucRNe2iwzJ5qJKGLLn2YYQo_u4y-eqO3MsNUCD1EAfTzJ_W_GuxOdVtAOXR1JA2BE-vrHLti5scUKKhWKPQU7cxwTtipXmM8LMM_p9mVvIHCFHPv9bKV_fzgG55OMGuFGNzZli9f32PiLPDfCd0jUeGCfOR4uJxFqm7FIwfxoIr1wLhisRUEG4nxksgZcMaEM5zwQZIMkFa5sJf_oeKTAKTe2jdrQcEJPFj0yjEEkS1MdEPA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/index-github-users-saved",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"index-github-users-saved"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update github users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjdmZTZlMS0zYjdmLTQzNmItYmE4NC1lYTU0MGJlOGU2ODAiLCJqdGkiOiIwODk3YmE2ZDQ2ODJiYTUwNTk1YzllMDE1YzY3MjBhMDBjZjJiMzQzN2JmZmRjYmY0Y2EwZjMxMWNkNzNkZDY3MGIzMTczYjMyNjU5ZTczNCIsImlhdCI6MTY1NDc3NDY0NC42NzI2MTksIm5iZiI6MTY1NDc3NDY0NC42NzI2MjMsImV4cCI6MTY4NjMxMDY0NC42NTYzMTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.cHcSqKLSJs_Ch2E5aAiQbdpx5IiivxsDxL9yhH44Qn6fQ3N6QB-15WulS2ISe8H9aNQ6a-7Opgc1uf0kNa67o1Aieb1JYlOtcWbFqOTc71HGwEbhuU_Z5UIkujNdVjZ6W6aoOBDTasszziFfNMMJuPBP9l8tyTkuS48eokPrhmr0CN21htDRdFs80TXqX3tQX2OqQ-hP_zEHHd67TfEDvreYHm5iucpX8G6vWQ78yn9ueMVZ0e9AkcAn19F0p0_ch5v7QE4VCrV0uARQRSRwEX1A7KXmjz07E2Dgl9Y22-vvZvS5YnzHoDPbwyGLtfe7iGQqoyYT2XC3pnnyDJc4tprULkde2ahfZ6SHaYvjO0666qNcDFL2LaYs9Pcd-VzEtuOCjFZbZBvyy1O9lnLNVuK_FEkb-I2LJh8pwoZQrumKfYqegvKr_Jp6VjhucRNe2iwzJ5qJKGLLn2YYQo_u4y-eqO3MsNUCD1EAfTzJ_W_GuxOdVtAOXR1JA2BE-vrHLti5scUKKhWKPQU7cxwTtipXmM8LMM_p9mVvIHCFHPv9bKV_fzgG55OMGuFGNzZli9f32PiLPDfCd0jUeGCfOR4uJxFqm7FIwfxoIr1wLhisRUEG4nxksgZcMaEM5zwQZIMkFa5sJf_oeKTAKTe2jdrQcEJPFj0yjEEkS1MdEPA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "manfredmichael",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/update-github-users/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"update-github-users",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete github users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjdmZTZlMS0zYjdmLTQzNmItYmE4NC1lYTU0MGJlOGU2ODAiLCJqdGkiOiIwODk3YmE2ZDQ2ODJiYTUwNTk1YzllMDE1YzY3MjBhMDBjZjJiMzQzN2JmZmRjYmY0Y2EwZjMxMWNkNzNkZDY3MGIzMTczYjMyNjU5ZTczNCIsImlhdCI6MTY1NDc3NDY0NC42NzI2MTksIm5iZiI6MTY1NDc3NDY0NC42NzI2MjMsImV4cCI6MTY4NjMxMDY0NC42NTYzMTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.cHcSqKLSJs_Ch2E5aAiQbdpx5IiivxsDxL9yhH44Qn6fQ3N6QB-15WulS2ISe8H9aNQ6a-7Opgc1uf0kNa67o1Aieb1JYlOtcWbFqOTc71HGwEbhuU_Z5UIkujNdVjZ6W6aoOBDTasszziFfNMMJuPBP9l8tyTkuS48eokPrhmr0CN21htDRdFs80TXqX3tQX2OqQ-hP_zEHHd67TfEDvreYHm5iucpX8G6vWQ78yn9ueMVZ0e9AkcAn19F0p0_ch5v7QE4VCrV0uARQRSRwEX1A7KXmjz07E2Dgl9Y22-vvZvS5YnzHoDPbwyGLtfe7iGQqoyYT2XC3pnnyDJc4tprULkde2ahfZ6SHaYvjO0666qNcDFL2LaYs9Pcd-VzEtuOCjFZbZBvyy1O9lnLNVuK_FEkb-I2LJh8pwoZQrumKfYqegvKr_Jp6VjhucRNe2iwzJ5qJKGLLn2YYQo_u4y-eqO3MsNUCD1EAfTzJ_W_GuxOdVtAOXR1JA2BE-vrHLti5scUKKhWKPQU7cxwTtipXmM8LMM_p9mVvIHCFHPv9bKV_fzgG55OMGuFGNzZli9f32PiLPDfCd0jUeGCfOR4uJxFqm7FIwfxoIr1wLhisRUEG4nxksgZcMaEM5zwQZIMkFa5sJf_oeKTAKTe2jdrQcEJPFj0yjEEkS1MdEPA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/delete-github-users/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"delete-github-users",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "search-log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjdmZTZlMS0zYjdmLTQzNmItYmE4NC1lYTU0MGJlOGU2ODAiLCJqdGkiOiIwODk3YmE2ZDQ2ODJiYTUwNTk1YzllMDE1YzY3MjBhMDBjZjJiMzQzN2JmZmRjYmY0Y2EwZjMxMWNkNzNkZDY3MGIzMTczYjMyNjU5ZTczNCIsImlhdCI6MTY1NDc3NDY0NC42NzI2MTksIm5iZiI6MTY1NDc3NDY0NC42NzI2MjMsImV4cCI6MTY4NjMxMDY0NC42NTYzMTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.cHcSqKLSJs_Ch2E5aAiQbdpx5IiivxsDxL9yhH44Qn6fQ3N6QB-15WulS2ISe8H9aNQ6a-7Opgc1uf0kNa67o1Aieb1JYlOtcWbFqOTc71HGwEbhuU_Z5UIkujNdVjZ6W6aoOBDTasszziFfNMMJuPBP9l8tyTkuS48eokPrhmr0CN21htDRdFs80TXqX3tQX2OqQ-hP_zEHHd67TfEDvreYHm5iucpX8G6vWQ78yn9ueMVZ0e9AkcAn19F0p0_ch5v7QE4VCrV0uARQRSRwEX1A7KXmjz07E2Dgl9Y22-vvZvS5YnzHoDPbwyGLtfe7iGQqoyYT2XC3pnnyDJc4tprULkde2ahfZ6SHaYvjO0666qNcDFL2LaYs9Pcd-VzEtuOCjFZbZBvyy1O9lnLNVuK_FEkb-I2LJh8pwoZQrumKfYqegvKr_Jp6VjhucRNe2iwzJ5qJKGLLn2YYQo_u4y-eqO3MsNUCD1EAfTzJ_W_GuxOdVtAOXR1JA2BE-vrHLti5scUKKhWKPQU7cxwTtipXmM8LMM_p9mVvIHCFHPv9bKV_fzgG55OMGuFGNzZli9f32PiLPDfCd0jUeGCfOR4uJxFqm7FIwfxoIr1wLhisRUEG4nxksgZcMaEM5zwQZIMkFa5sJf_oeKTAKTe2jdrQcEJPFj0yjEEkS1MdEPA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/index-search-logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"index-search-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list organization repositories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjdmZTZlMS0zYjdmLTQzNmItYmE4NC1lYTU0MGJlOGU2ODAiLCJqdGkiOiIwODk3YmE2ZDQ2ODJiYTUwNTk1YzllMDE1YzY3MjBhMDBjZjJiMzQzN2JmZmRjYmY0Y2EwZjMxMWNkNzNkZDY3MGIzMTczYjMyNjU5ZTczNCIsImlhdCI6MTY1NDc3NDY0NC42NzI2MTksIm5iZiI6MTY1NDc3NDY0NC42NzI2MjMsImV4cCI6MTY4NjMxMDY0NC42NTYzMTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.cHcSqKLSJs_Ch2E5aAiQbdpx5IiivxsDxL9yhH44Qn6fQ3N6QB-15WulS2ISe8H9aNQ6a-7Opgc1uf0kNa67o1Aieb1JYlOtcWbFqOTc71HGwEbhuU_Z5UIkujNdVjZ6W6aoOBDTasszziFfNMMJuPBP9l8tyTkuS48eokPrhmr0CN21htDRdFs80TXqX3tQX2OqQ-hP_zEHHd67TfEDvreYHm5iucpX8G6vWQ78yn9ueMVZ0e9AkcAn19F0p0_ch5v7QE4VCrV0uARQRSRwEX1A7KXmjz07E2Dgl9Y22-vvZvS5YnzHoDPbwyGLtfe7iGQqoyYT2XC3pnnyDJc4tprULkde2ahfZ6SHaYvjO0666qNcDFL2LaYs9Pcd-VzEtuOCjFZbZBvyy1O9lnLNVuK_FEkb-I2LJh8pwoZQrumKfYqegvKr_Jp6VjhucRNe2iwzJ5qJKGLLn2YYQo_u4y-eqO3MsNUCD1EAfTzJ_W_GuxOdVtAOXR1JA2BE-vrHLti5scUKKhWKPQU7cxwTtipXmM8LMM_p9mVvIHCFHPv9bKV_fzgG55OMGuFGNzZli9f32PiLPDfCd0jUeGCfOR4uJxFqm7FIwfxoIr1wLhisRUEG4nxksgZcMaEM5zwQZIMkFa5sJf_oeKTAKTe2jdrQcEJPFj0yjEEkS1MdEPA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "organization",
+									"value": "Gunadarma",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/list_organization_repositories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"list_organization_repositories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "didinnuryahya@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "index-github-users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "febriadj",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/index-github-users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"index-github-users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "salma aulia",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "salmaaulia@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
