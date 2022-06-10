@@ -1,4 +1,5 @@
 ## About Exodust Beta
+
 <br/>
 <h1>*route application</h1>
 <br/>
@@ -19,24 +20,24 @@
 <h4>[post] http://localhost:8000/api/login</h4><br/>
 <h4>[post] http://localhost:8000/api/login</h4><br/>
 
+-   How to make run Application
 
-- How to make run Application
+1. Download Zip application and extract
 
-1. Download Zip application and extract 
-
-2. Open command prompt and direct your folder typing 
-    composer install
+2. Open command prompt and direct your folder typing
+   composer install
 3. typing in command prompt
-    php artisan migrate
-    php artisan passport:install
+   php artisan migrate
+   php artisan passport:install
 4. download your redis and setting port redis 127.0.0.1:6379
 5. typing in command prompt
-    1-php artisan config:cache
-    2-php artisan cache:clear
-6. check helpers.php, ApiGithubUserController.php & GithubUserController.php and rename part code in below change to your username and password github.
+   1-php artisan config:cache
+   2-php artisan cache:clear
+6. change .env.example to .env and change this code
 
-  <p>$user = 'your-username';</p><br/>
-  <p>$pwd = 'your-password';</p><br/>
+  <p>GITHUB_USERNAME={YOUR-USERNAME}
+</p><br/>
+  <p>GITHUB_PASSWORD={YOUR-PASSWORD}</p><br/>
 
 </h1>*image route application</h1>
 <h3>#route auth</h3>
@@ -47,7 +48,6 @@
 <br/>
 <br/>
 <br/>
-
 
 <img src="DocumentionImage/token.PNG">
 
@@ -78,4 +78,4 @@
 <br/>
 <img src="DocumentionImage/index-github-users.PNG">
 <br/>
-<h5>In Folder test2calculatehamming ready code for Bonus Challenge</h5> 
+<h5>In Folder test2calculatehamming ready code for Bonus Challenge</h5>

@@ -15,6 +15,7 @@ use Illuminate\Http\Exception;
 
 class GithubUserController extends Controller
 {
+    //index data github user saved 
     public function index(Request $request){
        
         $query = \json_encode($request->all());
@@ -26,6 +27,7 @@ class GithubUserController extends Controller
         return $this->generateResponse($data, '', 200);
     }  
 
+    //index data github user saved searching data with cache 
     public function searching(Request $request){
         $query = json_encode($request->all());
         $data = Cache::remember("github_users-$query", 120, function () use ($query,$request) {
@@ -46,7 +48,7 @@ class GithubUserController extends Controller
         return $this->generateResponse($data, '', 200);
     }
 
-
+    //update data
     public function update(Request $request, $id){
         try {        
                 $githubusers = GithubUser::where('id',$id)->first();
@@ -92,6 +94,8 @@ class GithubUserController extends Controller
             return $this->generateResponse($data, 'Callback Transaction gagal di tambahkan', 401);
         }
     }
+
+    //delete data with refresh auto increment id
 
     public function delete(Request $request, $id){
         try {

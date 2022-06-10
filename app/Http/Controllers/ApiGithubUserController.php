@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Redis;
 use Auth;
 class ApiGithubUserController extends Controller
 {
-    /* untuk menampilkan data antara news berbasis html */
+    /* Function show index github main */
     public function index_github_main(Request $request){
-        
+        /**call env file */
         $user = env('GITHUB_USERNAME');
         $pwd = env('GITHUB_PASSWORD');
         $username = $request->username;
 
+        //setup curl
         $url = 'https://api.github.com/users/'.$username;
         $cInit = curl_init();
         curl_setopt($cInit, CURLOPT_URL, $url);
@@ -28,6 +29,7 @@ class ApiGithubUserController extends Controller
         curl_setopt($cInit, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($cInit, CURLOPT_USERPWD, $user . ':' . $pwd);
 
+        //show output curl
         $output = curl_exec($cInit);
 
         $info = curl_getinfo($cInit, CURLINFO_HTTP_CODE);
@@ -40,6 +42,7 @@ class ApiGithubUserController extends Controller
             return $this->generateResponse('Error', "cURL Error #:" . $err, 401);
         } else {
             try {
+                //create redis and set new value redis cache cluster
                 $redis = Redis::connection();
 
                 $redis->set('github_user_mains', json_encode([
@@ -63,6 +66,7 @@ class ApiGithubUserController extends Controller
 
                 return $this->generateResponse($response, 'Data github Search', 200);
             }catch(\Exception $e){
+                //call redis cluster
                 $redis = Redis::connection();
                 $response = $redis->get('github_user_mains');
                 $response = json_decode($response);
@@ -71,12 +75,13 @@ class ApiGithubUserController extends Controller
             }
         }
     }
-
+    /* Function show index github main with auth*/
     public function index_github_main_auth(Request $request){
+           /**call env file */
         $user = env('GITHUB_USERNAME');
         $pwd = env('GITHUB_PASSWORD');
         $username = $request->username;
-
+        //set curl
         $url = 'https://api.github.com/users/'.$username;
         $cInit = curl_init();
         curl_setopt($cInit, CURLOPT_URL, $url);
@@ -85,18 +90,20 @@ class ApiGithubUserController extends Controller
         curl_setopt($cInit, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($cInit, CURLOPT_USERPWD, $user . ':' . $pwd);
 
+        //show output redis
         $output = curl_exec($cInit);
 
         $info = curl_getinfo($cInit, CURLINFO_HTTP_CODE);
         $err = curl_error($cInit);
         $result = json_decode($output);
-
+        //curl close function
         curl_close($cInit);
         if ($err) {
             Log::error("cURL Error #:" . $err);
             return $this->generateResponse('Error', "cURL Error #:" . $err, 401);
         } else {
             try {
+                //create redis and set new value redis cache cluster
                 $redis = Redis::connection();
 
                 $redis->set('github_user_mains', json_encode([
@@ -118,6 +125,8 @@ class ApiGithubUserController extends Controller
                 $response = $redis->get('github_user_mains');
                 $response = json_decode($response);
 
+                //save search log from data search 
+
                 $searchlog = new SearchLog;
                 $searchlog->id_user = auth('api')->user()->id;
                 $searchlog->searching = $username;
@@ -125,6 +134,7 @@ class ApiGithubUserController extends Controller
 
                 return $this->generateResponse($response, 'Data github Search', 201);
             }catch(\Exception $e){
+                //call redis cluster
                 $redis = Redis::connection();
                 $response = $redis->get('github_user_mains');
                 $response = json_decode($response);
@@ -143,6 +153,7 @@ class ApiGithubUserController extends Controller
         }
     }
 
+    //insert data github users
     public function insert_data_github_users(Request $request){
         try {
             $user = env('GITHUB_USERNAME');
@@ -189,7 +200,7 @@ class ApiGithubUserController extends Controller
             return $this->generateResponse($data, 'Callback Transaction gagal di tambahkan', 401);
         }
     }
-
+    //list organization repositories
     public function list_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -219,7 +230,7 @@ class ApiGithubUserController extends Controller
             return $this->generateResponse($result, 'Data github organization Search', 200);
         }
     }
-
+    //function get organization repositories 
     public function get_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -251,6 +262,7 @@ class ApiGithubUserController extends Controller
         }
     }
 
+    //function create organization repositories
     public function create_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -294,6 +306,8 @@ class ApiGithubUserController extends Controller
             return $this->generateResponse($result, 'Create github organization repositories', 200);
         }
     }
+
+     //function create organization repositories
     public function update_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -341,6 +355,7 @@ class ApiGithubUserController extends Controller
         }
     }
 
+     //function delte organization repositories
     public function delete_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -385,6 +400,7 @@ class ApiGithubUserController extends Controller
         }
     }
 
+    //function for enable automated fixes organization repositories
      public function enable_automated_fixes_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -429,6 +445,7 @@ class ApiGithubUserController extends Controller
         }
     }
 
+    //function for disable automated fixes organization repositories
     public function disable_automated_fixes_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -473,6 +490,7 @@ class ApiGithubUserController extends Controller
         }
     }
 
+    //function get list code owners errors
     public function list_code_owners_errors_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');
@@ -506,6 +524,7 @@ class ApiGithubUserController extends Controller
         }
     }
 
+    //function contributors list code owners errors
     public function list_repository_contributors_organization_repositories_github_main(Request $request){
 
         $user = env('GITHUB_USERNAME');

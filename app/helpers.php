@@ -4,8 +4,8 @@ use DiDom\Query;
 
     function get_followers_github($followers_url){
          
-        $user = 'your-username';
-        $pwd = 'your-password';
+         $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
 
         $cInit = curl_init();
         curl_setopt($cInit, CURLOPT_URL, $followers_url);
@@ -31,8 +31,8 @@ use DiDom\Query;
         /* digunakan untuk menampilkan data antara news dari rss xml */
     function get_following_github($following_url){
            
-        $user = 'your-username';
-        $pwd = 'your-password';
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
 
         $url = $following_url;
         $cInit = curl_init();
@@ -58,8 +58,8 @@ use DiDom\Query;
     }
          /* digunakan untuk menyimpan data tribunnews dari rss xml ke dalam database */
     function detail_repository_github($repos){
-        $user = 'your-username';
-        $pwd = 'your-password';
+         $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
 
         $url = $repos;
         $cInit = curl_init();
@@ -84,8 +84,8 @@ use DiDom\Query;
     }
              /* digunakan untuk menyimpan data antara news dari rss xml ke dalam database */
     function detail_organization_github($orgs){
-        $user = 'your-username';
-        $pwd = 'your-password';
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
 
         $url = $orgs;
         $cInit = curl_init();
@@ -111,8 +111,8 @@ use DiDom\Query;
              /* digunakan untuk menyimpan data tribunnews dari rss xml ke dalam database dengan metode command */
     function detail_company_github($company){
 
-        $user = 'your-username';
-        $pwd = 'your-password';
+        $user = env('GITHUB_USERNAME');
+        $pwd = env('GITHUB_PASSWORD');
 
         $url = "github.com/".RemoveCharCompany($company);
         $cInit = curl_init();
